@@ -1,0 +1,36 @@
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      Login
+    </ion-card-header>
+    <form [formGroup]="loginForm">
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <ion-label stacked>Email</ion-label>
+            <ion-input formControlName="email" type="email"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="!loginForm.controls.email.valid &&
+          loginForm.controls.email.dirty">
+            <p class="error-message">Please enter a valid email.</p>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>Password</ion-label>
+            <ion-input type="password" formControlName="password"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="!loginForm.controls.password.valid
+            && loginForm.controls.password.dirty">
+            <p class="error-message">Your password needs more than 6 characters.</p>
+          </ion-item>
+          <ion-item>
+            <button block ion-button (click)="login()" [disabled]="!loginForm.valid" color="primary">Login</button>
+          </ion-item>
+          <ion-item>
+            <button block ion-button (click)="goToSignupPage()" color="primary">Sign up</button>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </form>
+  </ion-card>
+</ion-content>
